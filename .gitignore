@@ -1,5 +1,21 @@
+# Project-specific
 raw_cache/
-*.har
-.env
 local/
 manifest.jsonl
+*.har
+*.pdf
+pgdata/
+.env
+.env.*
+!.env.example
+CLAUDE.local.md
+.claude/settings.local.json
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.DS_Store
+.idea/
