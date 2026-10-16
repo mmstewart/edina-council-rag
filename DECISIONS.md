@@ -26,8 +26,8 @@ One entry per non-trivial design choice: what, alternatives, why. Newest last.
 - **Alternatives:** unpinned `latest`; a `./pgdata` bind mount.
 - **Why:** pinning keeps HNSW behavior reproducible. Bind mounts under `/home` are slow on WSL2 and hit permission
   problems. 5433 avoids clashing with a local Postgres.
-- **Note:** the schema was verified on Postgres 16.2 + pgvector 0.6.2 (via the `pgserver` pip package) because Docker
-  wasn't installed yet. It still needs a run on the pinned image.
+- **Verified** on the pinned image (Postgres 17, pgvector 0.8.0, Docker Engine 29 inside WSL) and earlier on
+  Postgres 16.2 + pgvector 0.6.2.
 
 ## 2026-10-16: Pipeline progress lives only in ingestion_jobs
 - **What:** removed `documents.status`; added a `document_status` view derived from `ingestion_jobs`. Phase 1 still
