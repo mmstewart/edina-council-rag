@@ -22,7 +22,7 @@ model is configurable.
 - Be polite to the city's server: descriptive User-Agent, >= 2s between requests, cache every raw response/file, crawls
   must be resumable.
 - Never commit raw PDFs, HAR files, cookies, or secrets (keep in .gitignore).
-- Every pipeline stage must be idempotent (see ingestion_jobs in schema.sql).
+- Every pipeline stage must be idempotent (see ingestion_jobs in migrations/0001_init.sql).
 - Write tests for parsing/chunking logic. Run them before declaring done.
 - Record each non-trivial design choice in DECISIONS.md (what, alternatives, why).
 - Measure, don't guess: retrieval changes need an eval-set number before/after.

@@ -19,3 +19,12 @@ venv/
 .mypy_cache/
 .DS_Store
 .idea/
+# Added in M0
+*.part
+cookies*.txt
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+.ipynb_checkpoints/

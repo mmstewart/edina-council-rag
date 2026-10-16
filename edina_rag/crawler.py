@@ -11,7 +11,7 @@ Network tab, then replay those requests here using self._get(). Everything
 else (cookies, throttling, retries, raw caching, folder walk, filename
 parsing, review flagging) is done.
 
-Usage:  python crawler.py            # writes manifest.jsonl
+Usage:  uv run python -m edina_rag.crawler   # writes manifest.jsonl
 Before running: put a real contact address in USER_AGENT and check the
 city's terms of use and robots.txt.
 """
@@ -21,13 +21,13 @@ import hashlib
 import json
 import logging
 import time
+from collections.abc import Iterator
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterator
 
 import requests
 
-from filename_parser import kind_from_name, parse_filename
+from edina_rag.filename_parser import kind_from_name, parse_filename
 
 log = logging.getLogger("crawler")
 
@@ -88,7 +88,7 @@ class Crawler:
         raise NotImplementedError("replay the folder-listing request you see in dev tools")
 
     def fetch_document_bytes(self, entry: Entry) -> bytes:
-        raise NotImplementedError("replay the document download request (a direct .../edoc/<id>/<name>.pdf link may work)")
+        raise NotImplementedError("M1/M2: stream ElectronicFile.aspx?docid=<id> (see PLAN.md section 2)")
 
     # -- Done --------------------------------------------------------------
     def download(self, entry: Entry, dest_dir: Path = RAW_DIR) -> tuple[Path, str]:

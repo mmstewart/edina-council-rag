@@ -1,6 +1,6 @@
 from datetime import date
 
-from filename_parser import kind_from_name, parse_filename, parse_year_folder
+from edina_rag.filename_parser import kind_from_name, parse_filename, parse_year_folder
 
 
 def check(name, d, mtype, review=False, kind="packet"):

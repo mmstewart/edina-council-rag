@@ -1,0 +1,21 @@
+services:
+  db:
+    # Pinned so HNSW behavior is reproducible; bump deliberately and note it in DECISIONS.md.
+    image: pgvector/pgvector:0.8.0-pg17
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-edina}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-edina}
+      POSTGRES_DB: ${POSTGRES_DB:-edina}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      # Named volume, not a bind mount: bind mounts under /home are slow on WSL2.
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
